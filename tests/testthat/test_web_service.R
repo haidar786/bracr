@@ -1,13 +1,6 @@
 library(testthat)
 #input test
 
-testthat::test_that("User input wrong symbol in fetchSymbolExchangeInfo()", {
-  expect_error(fetchSymbolExchangeInfo(ggg124))
-  expect_error(fetchSymbolExchangeInfo(5454454))
-  expect_error(fetchSymbolExchangeInfo(abcdef))
-  expect_error(fetchSymbolExchangeInfo(R%%5))
-})
-
 testthat::test_that("User input wrong symbol in fetchSymbolOrderBook()", {
   expect_error(fetchSymbolOrderBook(ggg124))
   expect_error(fetchSymbolOrderBook(5454454))
@@ -72,6 +65,39 @@ testthat::test_that("User input wrong symbol in fetchTickerPrice()", {
   expect_error(fetchTickerPrice(R%%5))
 })
 
+# output test
 
+testthat::test_that("Output result of fetchSymbolOrderBook()", {
+  df = fetchSymbolOrderBook("BNBBTC")
+  expect_true(is.data.frame(df))
+})
 
+testthat::test_that("User input wrong symbol or limit in fetchSymbolTrades()", {
+  df = fetchSymbolTrades("BNBBTC", 5)
+  expect_true(is.data.frame(df))
+})
 
+testthat::test_that("User input wrong symbol or limit in fetchSymbolAggTrades()", {
+  df = fetchSymbolAggTrades("BNBBTC", 5)
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("User input wrong symbol or interval in fetchSymbolCandleStick()", {
+  df = fetchSymbolCandleStick("BNBBTC", "3m")
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("User input wrong symbol in fetchSymbolAveragePrice()", {
+  df = fetchSymbolAveragePrice("BNBBTC")
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("User input wrong symbol in fetchTicker24hPrice()", {
+  df = fetchTicker24hPrice("BNBBTC")
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("User input wrong symbol in fetchTickerPrice()", {
+  df = fetchTickerPrice("BNBBTC")
+  expect_true(is.data.frame(df))
+})

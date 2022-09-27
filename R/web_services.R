@@ -4,43 +4,26 @@ library(future)
 
 baseApi <- "https://api.binance.com"
 
-
 pingToServer <- function() {
   endPoint <- "/api/v3/ping"
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
   sc <- status_code(resValue)
-  if (sc == 1) {
-
-  }
   content <- content(resValue, "text")
-  return(as.data.frame(fromJSON(content)))
+  return(as.data.frame(content))
 }
-
 
 checkServerTime <- function() {
   endPoint <- "/api/v3/time"
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
   sc <- status_code(resValue)
-  if (sc == 1) {
-
-  }
   content <- content(resValue, "text")
   return(as.data.frame(fromJSON(content)))
 }
-
-
-fetchSymbolExchangeInfo <- function(symbol) {
-  endPoint <- paste0("/api/v3/exchangeInfo?symbol=", symbol)
-  getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
-  resValue <- value(getFutureRes)
-  content <- content(resValue, "text")
-  return(as.data.frame(fromJSON(content)))
-}
-
 
 fetchSymbolOrderBook <- function(symbol) {
+  stopifnot(is.character(symbol))
   endPoint <- paste0("/api/v3/depth?symbol=", symbol)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
@@ -48,8 +31,9 @@ fetchSymbolOrderBook <- function(symbol) {
   return(as.data.frame(fromJSON(content)))
 }
 
-
 fetchSymbolTrades <- function(symbol, limit) {
+  stopifnot(is.character(symbol))
+  stopifnot(is.numeric(limit))
   endPoint <- paste0("/api/v3/trades?symbol=", symbol,"&&limit=",limit)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
@@ -57,8 +41,9 @@ fetchSymbolTrades <- function(symbol, limit) {
   return(as.data.frame(fromJSON(content)))
 }
 
-
 fetchSymbolAggTrades <- function(symbol, limit) {
+  stopifnot(is.character(symbol))
+  stopifnot(is.numeric(limit))
   endPoint <- paste0("/api/v3/aggTrades?symbol=", symbol,"&&limit=",limit)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
@@ -66,9 +51,10 @@ fetchSymbolAggTrades <- function(symbol, limit) {
   return(as.data.frame(fromJSON(content)))
 }
 
-
 fetchSymbolCandleStick <- function(symbol, interval) {
-  endPoint <- paste0("/api/v3/klines?symbol=", symbol,"&&interval=3m")
+  stopifnot(is.character(symbol))
+  stopifnot(is.character(interval))
+  endPoint <- paste0("/api/v3/klines?symbol=", symbol,"&&interval=", interval)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   print(getFutureRes)
   resValue <- value(getFutureRes)
@@ -79,6 +65,7 @@ fetchSymbolCandleStick <- function(symbol, interval) {
 
 
 fetchSymbolAveragePrice <- function(symbol) {
+  stopifnot(is.character(symbol))
   endPoint <- paste0("/api/v3/avgPrice?symbol=", symbol)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
@@ -87,6 +74,7 @@ fetchSymbolAveragePrice <- function(symbol) {
 }
 
 fetchTicker24hPrice <- function(symbol) {
+  stopifnot(is.character(symbol))
   endPoint <- paste0("/api/v3/ticker/24hr?symbol=", symbol)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
@@ -94,14 +82,12 @@ fetchTicker24hPrice <- function(symbol) {
   return(as.data.frame(fromJSON(content)))
 }
 
-
 fetchTickerPrice <- function(symbol) {
+  stopifnot(is.character(symbol))
   endPoint <- paste0("/api/v3/ticker/price?symbol=", symbol)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
   content <- content(resValue, "text")
   return(as.data.frame(fromJSON(content)))
 }
-
-fetchTickerPrice(symbol = "BNBBTC")
 
