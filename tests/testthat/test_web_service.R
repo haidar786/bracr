@@ -1,4 +1,8 @@
 library(testthat)
+library(httr)
+library(jsonlite)
+library(future)
+
 #input test
 
 testthat::test_that("User input wrong symbol in fetchSymbolOrderBook()", {
