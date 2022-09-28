@@ -1,6 +1,6 @@
-library(httr)
+#library(httr)
 #library(jsonlite)
-library(future)
+#library(future)
 
 baseApi <- "https://api.binance.com"
 
