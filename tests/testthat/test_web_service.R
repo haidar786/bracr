@@ -67,37 +67,67 @@ testthat::test_that("User input wrong symbol in fetchTickerPrice()", {
 
 # output test
 
-testthat::test_that("Output result of fetchSymbolOrderBook()", {
+testthat::test_that("pingToServer() function is working", {
+  df = pingToServer()
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("checkServerTime() function is working", {
+  df = checkServerTime()
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("fetchSymbolOrderBook() function is working", {
   df = fetchSymbolOrderBook("BNBBTC")
   expect_true(is.data.frame(df))
 })
 
-testthat::test_that("User input wrong symbol or limit in fetchSymbolTrades()", {
+testthat::test_that("fetchSymbolTrades() function is working", {
   df = fetchSymbolTrades("BNBBTC", 5)
   expect_true(is.data.frame(df))
 })
 
-testthat::test_that("User input wrong symbol or limit in fetchSymbolAggTrades()", {
+testthat::test_that("fetchSymbolAggTrades() function is working", {
   df = fetchSymbolAggTrades("BNBBTC", 5)
   expect_true(is.data.frame(df))
 })
 
-testthat::test_that("User input wrong symbol or interval in fetchSymbolCandleStick()", {
+testthat::test_that("fetchSymbolCandleStick() function is working", {
   df = fetchSymbolCandleStick("BNBBTC", "3m")
   expect_true(is.data.frame(df))
 })
 
-testthat::test_that("User input wrong symbol in fetchSymbolAveragePrice()", {
+testthat::test_that("fetchSymbolAveragePrice() function is working", {
   df = fetchSymbolAveragePrice("BNBBTC")
   expect_true(is.data.frame(df))
 })
 
-testthat::test_that("User input wrong symbol in fetchTicker24hPrice()", {
+testthat::test_that("fetchTicker24hPrice() function is working", {
   df = fetchTicker24hPrice("BNBBTC")
   expect_true(is.data.frame(df))
 })
 
-testthat::test_that("User input wrong symbol in fetchTickerPrice()", {
+testthat::test_that("fetchTickerPrice() function is working", {
   df = fetchTickerPrice("BNBBTC")
   expect_true(is.data.frame(df))
 })
+
+# Downloading a big query
+
+testthat::test_that("fetchSymbolOrderBook() function is working", {
+  df = fetchSymbolOrderBook("BNBBTC", 5000)
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("fetchSymbolTrades() function is working", {
+  df = fetchSymbolTrades("BNBBTC", 5000)
+  #print(df)
+  expect_true(is.data.frame(df))
+})
+
+testthat::test_that("fetchSymbolAggTrades() function is working", {
+  df = fetchSymbolAggTrades("BNBBTC", 5000)
+  #print(df)
+  expect_true(is.data.frame(df))
+})
+

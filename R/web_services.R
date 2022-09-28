@@ -22,14 +22,16 @@ checkServerTime <- function() {
   return(as.data.frame(fromJSON(content)))
 }
 
-fetchSymbolOrderBook <- function(symbol) {
+fetchSymbolOrderBook <- function(symbol, limit = 2) {
   stopifnot(is.character(symbol))
-  endPoint <- paste0("/api/v3/depth?symbol=", symbol)
+  stopifnot(is.numeric(limit))
+  endPoint <- paste0("/api/v3/depth?symbol=", symbol, "&&limit=", limit)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
   content <- content(resValue, "text")
   return(as.data.frame(fromJSON(content)))
 }
+
 
 fetchSymbolTrades <- function(symbol, limit) {
   stopifnot(is.character(symbol))
@@ -56,9 +58,7 @@ fetchSymbolCandleStick <- function(symbol, interval) {
   stopifnot(is.character(interval))
   endPoint <- paste0("/api/v3/klines?symbol=", symbol,"&&interval=", interval)
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
-  print(getFutureRes)
   resValue <- value(getFutureRes)
-  print(resValue)
   content <- content(resValue, "text")
   return(as.data.frame(fromJSON(content)))
 }
