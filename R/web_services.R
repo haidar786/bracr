@@ -1,10 +1,10 @@
 library(httr)
 #library(jsonlite)
+library(future)
 
 baseApi <- "https://api.binance.com"
 
 pingToServer <- function() {
-  library(future)
   endPoint <- "/api/v3/ping"
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
   resValue <- value(getFutureRes)
