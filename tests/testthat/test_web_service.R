@@ -96,11 +96,6 @@ testthat::test_that("fetchSymbolAggTrades() function is working", {
   expect_true(is.data.frame(df))
 })
 
-testthat::test_that("fetchSymbolCandleStick() function is working", {
-  df = fetchSymbolCandleStick("BNBBTC", "3m")
-  expect_true(is.data.frame(df))
-})
-
 testthat::test_that("fetchSymbolAveragePrice() function is working", {
   df = fetchSymbolAveragePrice("BNBBTC")
   expect_true(is.data.frame(df))
@@ -118,10 +113,7 @@ testthat::test_that("fetchTickerPrice() function is working", {
 
 # Downloading a big query
 
-testthat::test_that("fetchSymbolOrderBook() function is working", {
-  df = fetchSymbolOrderBook("BNBBTC", 5000)
-  expect_true(is.data.frame(df))
-})
+
 
 testthat::test_that("fetchSymbolTrades() function is working", {
   df = fetchSymbolTrades("BNBBTC", 5000)

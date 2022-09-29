@@ -3,7 +3,11 @@
 #library(future)
 
 baseApi <- "https://api.binance.com"
-
+#' pingToServer
+#'
+#' @return Returns a data.frame as result.
+#' @export
+#'
 pingToServer <- function() {
   endPoint <- "/api/v3/ping"
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
@@ -12,6 +16,12 @@ pingToServer <- function() {
   content <- content(resValue, "text")
   return(as.data.frame(content))
 }
+
+#' checkServerTime
+#'
+#' @return Returns a data.frame as result.
+#' @export
+#'
 
 checkServerTime <- function() {
   endPoint <- "/api/v3/time"
