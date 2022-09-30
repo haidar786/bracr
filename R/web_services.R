@@ -8,6 +8,7 @@ baseApi <- "https://api.binance.com"
 #' @return Returns a data.frame as result.
 #' @export
 #'
+
 pingToServer <- function() {
   endPoint <- "/api/v3/ping"
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
