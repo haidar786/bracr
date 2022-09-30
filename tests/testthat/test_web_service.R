@@ -3,7 +3,6 @@ library(httr)
 library(jsonlite)
 library(future)
 
-#input test
 
 testthat::test_that("User input wrong symbol in fetchSymbolOrderBook()", {
   expect_error(fetchSymbolOrderBook(ggg124))
@@ -69,7 +68,6 @@ testthat::test_that("User input wrong symbol in fetchTickerPrice()", {
   expect_error(fetchTickerPrice(R%%5))
 })
 
-# output test
 
 testthat::test_that("pingToServer() function is working", {
   df = pingToServer()
@@ -111,19 +109,13 @@ testthat::test_that("fetchTickerPrice() function is working", {
   expect_true(is.data.frame(df))
 })
 
-# Downloading a big query
-
-
-
 testthat::test_that("fetchSymbolTrades() function is working", {
   df = fetchSymbolTrades("BNBBTC", 5000)
-  #print(df)
   expect_true(is.data.frame(df))
 })
 
 testthat::test_that("fetchSymbolAggTrades() function is working", {
   df = fetchSymbolAggTrades("BNBBTC", 5000)
-  #print(df)
   expect_true(is.data.frame(df))
 })
 

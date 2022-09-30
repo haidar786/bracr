@@ -7,7 +7,7 @@
 checkServerTime()
 }
 \value{
-Returns a data.frame as result.
+Returns a data.frame as result contains time of server.
 }
 \description{
 checkServerTime
