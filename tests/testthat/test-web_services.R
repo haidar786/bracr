@@ -1,7 +1,6 @@
 library(httr)
 library(jsonlite)
 library(future)
-library(testthat)
 
 
 testthat::test_that("User input wrong symbol in fetchSymbolOrderBook()", {
