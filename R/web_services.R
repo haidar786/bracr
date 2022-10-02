@@ -5,7 +5,9 @@
 #' @import jsonlite
 #' @export
 #'
+
 baseApi <- "https://api.binance.com"
+
 pingToServer <- function() {
   endPoint <- "/api/v3/ping"
   getFutureRes <- future(GET(url = paste0(baseApi, endPoint)))
