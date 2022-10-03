@@ -17,3 +17,40 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(brac)
 ```
+# About this package:
+
+The package is about getting data from binance api with different functions.
+
+1. **pingToServer()**
+
+The function returns data frame of empty data just to confirm ping is working.
+
+2. **checkServerTime()**
+
+The function returns data frame of current server time.
+
+3. **fetchSymbolOrderBook()**
+
+The function returns the symbol order book.
+
+4. **fetchSymbolTrades()**
+
+The function returns symbol trades data frame.
+
+5. **fetchSymbolAggTrades()**
+
+The function returns the symbol aggregate trades data frame.
+
+6. **fetchSymbolAveragePrice()**
+
+The function returns the symbol average price data frame.
+
+7. **fetchTicker24hPrice()**
+
+The function returns the ticker 24h price data frame.
+
+8. **fetchTickerPrice()**
+
+The function returns the ticker price data frame.
+
+
