@@ -1,3 +1,7 @@
+#' baseApi
+#' @export
+#'
+
 baseApi <- "https://api.binance.com"
 
 #' pingToServer
