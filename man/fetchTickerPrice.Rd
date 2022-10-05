@@ -6,6 +6,9 @@
 \usage{
 fetchTickerPrice(symbol)
 }
+\arguments{
+\item{symbol}{ticker pair}
+}
 \value{
 Returns a data.frame as result.
 }

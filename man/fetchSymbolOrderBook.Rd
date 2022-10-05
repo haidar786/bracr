@@ -6,6 +6,11 @@
 \usage{
 fetchSymbolOrderBook(symbol, limit = 2)
 }
+\arguments{
+\item{symbol}{ticker pair}
+
+\item{limit}{limits of json data}
+}
 \value{
 Returns a data.frame as result.
 }

@@ -1,7 +1,3 @@
-#' baseApi
-#' @export
-#'
-
 baseApi <- "https://api.binance.com"
 
 #' pingToServer
@@ -37,6 +33,8 @@ checkServerTime <- function() {
 }
 
 #' fetchSymbolOrderBook
+#' @param symbol ticker pair
+#' @param limit limits of json data
 #' @return Returns a data.frame as result.
 #' @import httr
 #' @import future
@@ -55,6 +53,8 @@ fetchSymbolOrderBook <- function(symbol, limit = 2) {
 }
 
 #' fetchSymbolTrades
+#' @param symbol ticker pair
+#' @param limit limits of json data
 #' @return Returns a data.frame as result.
 #' @import httr
 #' @import future
@@ -73,6 +73,8 @@ fetchSymbolTrades <- function(symbol, limit) {
 }
 
 #' fetchSymbolAggTrades
+#' @param symbol ticker pair
+#' @param limit limits of json data
 #' @return Returns a data.frame as result.
 #' @import httr
 #' @import future
@@ -91,6 +93,7 @@ fetchSymbolAggTrades <- function(symbol, limit) {
 }
 
 #' fetchSymbolAveragePrice
+#' @param symbol ticker pair
 #' @return Returns a data.frame as result.
 #' @import httr
 #' @import future
@@ -108,6 +111,7 @@ fetchSymbolAveragePrice <- function(symbol) {
 }
 
 #' fetchTicker24hPrice
+#' @param symbol ticker pair
 #' @return Returns a data.frame as result.
 #' @import httr
 #' @import future
@@ -126,6 +130,7 @@ fetchTicker24hPrice <- function(symbol) {
 
 
 #' fetchTickerPrice
+#' @param symbol ticker pair
 #' @return Returns a data.frame as result.
 #' @import httr
 #' @import future
